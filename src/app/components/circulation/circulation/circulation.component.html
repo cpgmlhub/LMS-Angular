@@ -1,0 +1,58 @@
+<div>
+    <div class="w-full flex justify-between align-middle p-2">
+      <span class="text-xl font-bold">Circulations</span>
+      <div class="">
+        <input
+        type="text"
+        name="username"
+        id="search"
+        class=" border-2 rounded-md bg-transparent  pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+        placeholder="search by Id"
+        [(ngModel)]="searchId"
+      />
+      <button class="px-4 py-1 m-1 bg-gray-500 text-white rounded-md" (click)="searchById()" >Search</button>
+      <button class="px-4 py-1 m-1 bg-gray-500 text-white rounded-md" (click)="clear()" >Clear</button>
+          <button class="px-4 py-1 m-1 bg-yellow-500 text-white rounded-md" (click)="showCreateDialog()" >Create</button>
+          
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Member</th>
+          <th>Issue Date</th>
+          <th>Due Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let circulation of circulations ">
+          <td>{{ circulation.id }}</td>
+          <td>{{ circulation.memberId }}</td>
+          <td>{{circulation.issueDate}}</td>
+          <td>{{circulation.dueDate}}</td>
+          <td>
+            <!-- <button
+              class="px-4 py-1 m-1 bg-yellow-500 text-white rounded-md"
+              (click)="editCatalogue(catalogue)"
+            >
+              Edit
+            </button> -->
+            <button
+              class="px-4 py-1 ml-4 m-1 bg-red-500 text-white rounded-md"
+              (click)="delete(circulation.id)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-container *ngIf="showDialog">
+        <app-circulation-dialog (onCancel)="closeDialog()" (onSubmit)="submit($event)"  ></app-circulation-dialog>
+    </ng-container>
+  </div>
+  
+  
+  

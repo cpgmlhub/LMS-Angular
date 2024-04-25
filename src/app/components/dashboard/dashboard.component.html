@@ -1,0 +1,40 @@
+<header class="bg-white shadow">
+  <div class=" flex justify-between align-middle mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <div class="flex justify-between align-middle">
+        <span class="text-3xl font-bold tracking-tight text-gray-900">Dashboard</span>
+        <div *ngIf="user" class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+              <!-- <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a> -->
+              <a routerLink="catalogues"  routerLinkActive="active"  class="text-gray-500 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Catalogues</a>
+              <a routerLink="members" routerLinkActive="active"  ngClass="current" class="text-gray-500 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Members</a>
+              <a routerLink="circulations" routerLinkActive="active"  class="text-gray-500 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Circulation</a>
+              <a routerLink="acquisitions" routerLinkActive="active"  class="text-gray-500 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Acquisition</a>
+              <a routerLink="reviews" routerLinkActive="active"  class="text-gray-500 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Review</a>
+            </div>
+          </div>
+    </div>
+    <div class="flex gap-2">
+      <button
+      (click)="showCreateDialog()"
+        class="flex  justify-center cursor-pointer rounded-md bg-yellow-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+      >
+        Add new Administrator
+      </button>
+      <button
+      (click)="logout()"
+        class="flexjustify-center cursor-pointer rounded-md bg-red-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+      >
+        Logout
+      </button>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+    <router-outlet></router-outlet>
+  </div>
+</main>
+<ng-container *ngIf="showDialog">
+  <app-create-admin-dialog (onCancel)="closeDialog()" (onSubmit)="submit($event)"  ></app-create-admin-dialog>
+</ng-container>

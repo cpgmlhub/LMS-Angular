@@ -1,0 +1,24 @@
+table{
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+
+th {
+  font-weight: bold;
+  text-align: center;
+  background-color: #262c3cfa;
+  padding: 10px;
+  color: white;
+}
+
+tr {
+  background-color: #ffffff;
+  border-bottom: 1px solid #dddddd;
+  text-align: center;
+}
+
+tr:hover {
+  background-color: #4a4a5f;
+  color:white;
+}
